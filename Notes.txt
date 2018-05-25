@@ -1,0 +1,10 @@
+Sublime Playbook
+
+Overview
+
+Links
+
+https://www.expressvpn.com/blog/ansible-variables-vaults/#best
+https://github.com/mbigras/ansible-vault-example
+https://forum.sublimetext.com/t/license-installation-silently/13749
+

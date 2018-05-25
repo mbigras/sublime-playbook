@@ -1,0 +1,29 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check if Homebrew is already installed
+      stat:
+        path: /usr/local/bin/brew
+      register: b
+
+    - name: Install Homebrew
+      script: install-homebrew.sh
+      when: not b.stat.exists
+
+    # - homebrew:
+    #     name: lastpass-cli
+
+    - homebrew_cask:
+        name:
+          - sublime-text
+
+    - name: Make Sublime Local dir
+      file:
+        path: "~/Library/Application Support/Sublime Text 3/Local"
+        state: directory
+    
+    # https://forum.sublimetext.com/t/license-installation-silently/13749
+    - name: Copy Sublime Text License
+      copy:
+        src: files/License.sublime_license
+        dest: "~/Library/Application Support/Sublime Text 3/Local"
